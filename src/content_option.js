@@ -34,11 +34,11 @@ const worktimeline = [{
     where: "Amusoft",
     date: "2025",
 },
-// {
-//     jobtitle: "Designer of week",
-//     where: "ALquds",
-//     date: "2019",
-// },
+    // {
+    //     jobtitle: "Designer of week",
+    //     where: "ALquds",
+    //     date: "2019",
+    // },
 ];
 
 const skills = [{
@@ -49,7 +49,7 @@ const skills = [{
     name: "Css",
     value: 55,
 },
-    
+
 {
     name: "Javascript",
     value: 60,
@@ -112,9 +112,9 @@ const contactConfig = {
     description: "Ready for cooperation and new projects! Contact me in a convenient way:",
     // creat an emailjs.com account 
     // check out this tutorial https://www.emailjs.com/docs/examples/reactjs/
-    // YOUR_SERVICE_ID: "service_20l9zhp",
-    // YOUR_TEMPLATE_ID: "template_lrnir4h",
-    // YOUR_USER_ID: "Z7fKWBOc1u_NAgipt",
+    YOUR_SERVICE_ID: "service_1d0umfr",
+    YOUR_TEMPLATE_ID: "template_f7wuhu7",
+    YOUR_USER_ID: "8YHB7Q-aZIrwXZNM0",
 };
 
 const socialprofils = {
