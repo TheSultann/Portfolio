@@ -89,9 +89,9 @@ const services = [{
 const dataportfolio = [{
     img: filmzone,
     title: "FilmZone",
-    tag1: "React",
-    tag2: "Javascript",
-    description: "FilmZone is my own movie site where users can search for movies, view information about them, and add them to their watch list.",
+    tag1: "Node.js",
+    tag2: "Express.js",
+    description: "Built the backend for the FilmZone project, focusing on user authentication (registration/login) and watchlist functionality.",
     link: "https://filmzonee.netlify.app/",
 },
 {
