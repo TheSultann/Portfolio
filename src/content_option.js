@@ -1,5 +1,5 @@
 import filmzone from "./assets/images/filmzone.jpg"
-import call from "./assets/images/call.jpg"
+import SpeakChek from "./assets/images/SpeakChek.jpg"
 
 
 
@@ -95,12 +95,11 @@ const dataportfolio = [{
     link: "https://filmzonee.netlify.app/",
 },
 {
-    img: call,
-    title: "Call Centre",
-    tag1: "Html",
-    tag2: "Laravel",
-    description: "Welcome to the one-stop safe travel service center!.",
-    link: "http://tourismservice.uz/",
+    img: SpeakChek,
+    title: "English Grammar & IELTS Speaking Bot",
+    tag1: "Node.js",
+    tag2: "Telegram bot",
+    description: "A Telegram bot designed to improve English grammar and practice for the IELTS Speaking test, utilizing the Google Gemini and Speech-to-Text APIs."
 },
 
 
