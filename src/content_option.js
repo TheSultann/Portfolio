@@ -99,7 +99,8 @@ const dataportfolio = [{
     title: "English Grammar & IELTS Speaking Bot",
     tag1: "Node.js",
     tag2: "Telegram bot",
-    description: "A Telegram bot designed to improve English grammar and practice for the IELTS Speaking test, utilizing the Google Gemini and Speech-to-Text APIs."
+    description: "A Telegram bot designed to improve English grammar and practice for the IELTS Speaking test, utilizing the Google Gemini and Speech-to-Text APIs.",
+    link: "https://t.me/Speak_CheckBot",
 },
 
 
