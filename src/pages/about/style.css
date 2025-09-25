@@ -98,3 +98,92 @@
         transform: translateZ(0);
     }
 }
+/* ================= STYLES FOR WORK TIMELINE ================= */
+
+.timeline-container {
+    position: relative;
+    padding-left: 30px; /* Space for the timeline line */
+  }
+  
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background-color: var(--clr-neutral-700); /* Using your color variable */
+  }
+  
+  .timeline-item {
+    position: relative;
+    margin-bottom: 40px; /* Space between items */
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -25px; /* Position on the timeline line */
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--clr-primary-200); /* Using your color variable */
+    border: 2px solid var(--clr-neutral-800);
+  }
+  
+  .timeline-title {
+    font-family: var(--ff-secondary);
+    font-size: var(--fs-500);
+    font-weight: var(--fw-bold);
+    color: var(--clr-neutral-100);
+  }
+  
+  .timeline-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 5px 0 10px;
+    font-size: var(--fs-300);
+    color: var(--clr-neutral-400);
+  }
+  
+  .timeline-description {
+    font-size: var(--fs-400);
+    color: var(--clr-neutral-300);
+    line-height: 1.6;
+  }
+
+  /* ================= STYLES FOR SERVICES SECTION ================= */
+.service-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Одна колонка по умолчанию */
+    gap: 2rem;
+  }
+  
+  .service-card {
+    background-color: var(--clr-neutral-800);
+    border-left: 4px solid var(--clr-primary-200);
+    padding: 1.5rem;
+    border-radius: 0.25rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .service-title {
+    font-family: var(--ff-secondary);
+    font-size: var(--fs-500);
+    margin-bottom: 0.75rem;
+    color: var(--clr-neutral-100);
+  }
+  
+  .service-description {
+    color: var(--clr-neutral-300);
+    line-height: 1.6;
+  }

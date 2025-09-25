@@ -12,9 +12,8 @@ const meta = {
 const introdata = {
     title: "I’m Sultan ",
     animated: {
-        first: "I am lazy",
-        second: "I love coding",
-        third: "I develop Websites",
+        second: "Backend Enthusiast",
+        third: "Full-Stack Creator",
     },
     description: "Otanazarov Sultan is a back-end developer who creates user-friendly and aesthetic interfaces. Attentive to details, responsible, purposeful and strives for an ideal result.",
     your_img_url: "https://cimg.co/w/articles-attachments/0/611/e04b918532.jpeg",
@@ -22,67 +21,64 @@ const introdata = {
 
 const dataabout = {
     title: "Briefly about my self",
-    aboutme: "I am an aspiring Backend Developer, actively working to gain experience in developing server-side solutions using JavaScript, Node.js, and Express.js. I am constantly learning and improving my skills in backend development. When faced with challenges or unfamiliar tasks, I am able to quickly find resources and solutions to solve them on the go.  My goal is to build reliable and scalable solutions, and I am ready to take on new challenges to grow professionally in this field.",
+    aboutme: "As a Computer Engineering student with hands-on experience in backend development, I focus on creating high-impact solutions using Node.js, Express.js, and MongoDB. My project portfolio includes an AI-integrated Telegram bot for English learners and a full-stack educational platform with role-based user management. My participation in hackathons and tech competitions has honed my ability to innovate under pressure. I am seeking opportunities to apply my skills to real-world challenges and contribute to a forward-thinking development team.",
 };
 const worktimeline = [{
-    jobtitle: "Front-End developer",
-    where: "Ubtuit",
-    date: "2024",
+    jobtitle: "AI Data Annotator",
+    where: "BigBro.AI",
+    date: "June 2025 - Present",
+    link: "https://bigbro.ai/",
+    description: "Responsible for data annotation and preparing datasets for AI/ML models. This role sharpened my attention to detail and provided a practical understanding of the data lifecycle in AI projects.",
 },
 {
-    jobtitle: "Front-End developer",
-    where: "Amusoft",
-    date: "2025",
+    jobtitle: "Freelance Backend Developer",
+    where: "Personal & University Projects",
+    date: "2023 - Present",
+    description: "Developed and maintained several projects, including AI-powered Telegram bots and educational platforms using the MERN stack. Focused on creating RESTful APIs, managing databases, and implementing server-side logic.",
 },
-    // {
-    //     jobtitle: "Designer of week",
-    //     where: "ALquds",
-    //     date: "2019",
-    // },
 ];
-
 const skills = [{
     name: "Html",
-    value: 70,
+    value: 76,
 },
 {
     name: "Css",
-    value: 55,
+    value: 75,
 },
 
 {
     name: "Javascript",
-    value: 60,
+    value: 85,
 },
 {
     name: "NodeJS",
-    value: 65,
+    value: 80,
 },
 {
     name: "ExpressJs",
-    value: 65,
+    value: 80,
 },
 {
     name: "MongoDB",
-    value: 45,
+    value: 75,
 },
 {
     name: "SQL",
-    value: 35,
+    value: 40,
 },
 ];
 
 const services = [{
-    title: "Web development ",
-    description: "Creation of modern and user-friendly websites with thoughtful UX/UI   ",
+    title: "Backend & API Development",
+    description: "Developing robust and scalable server-side applications. Specializing in creating secure RESTful APIs, managing databases (MongoDB, PostgreSQL), and implementing complex business logic to power web and mobile apps.",
 },
 {
-    title: "Optimization and improvement",
-    description: "Improved performance, redesign and introduction of new features.",
+    title: "AI & Bot Integration",
+    description: "Integrating intelligent solutions into applications. From developing AI-powered Telegram bots using Google Gemini to automating tasks, I can enhance your project with smart, interactive features.",
 },
 {
-    title: "Mobile development(Test)",
-    description: "Development of cross-platform applications at Expo.",
+    title: "Full-Stack System Design",
+    description: "Designing and consulting on full-stack application architecture. I help bridge the gap between front-end and back-end, ensuring seamless data flow and a well-structured, maintainable codebase for MERN stack projects.",
 },
 ];
 

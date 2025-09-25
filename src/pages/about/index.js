@@ -27,32 +27,27 @@ export const About = () => {
         </Row>
         <Row className="sec_sp">
           <Col lg="5">
-            <h3 className="color_sec py-4">{dataabout.title}</h3>
-          </Col>
-          <Col lg="7" className="d-flex align-items-center">
-            <div>
-              <p>{dataabout.aboutme}</p>
-            </div>
-          </Col>
-        </Row>
-        <Row className=" sec_sp">
-          <Col lg="5">
-            <h3 className="color_sec py-4">Work Timline</h3>
+            <h3 className="color_sec py-4">Work Timeline</h3>
           </Col>
           <Col lg="7">
-            <table className="table caption-top">
-              <tbody>
-                {worktimeline.map((data, i) => {
-                  return (
-                    <tr key={i}>
-                      <th scope="row">{data.jobtitle}</th>
-                      <td>{data.where}</td>
-                      <td>{data.date}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <div className="timeline-container">
+              {worktimeline.map((data, i) => {
+                return (
+                  <div className="timeline-item" key={i}>
+                    <div className="timeline-content">
+                      <h5 className="timeline-title">{data.jobtitle}</h5>
+                      <div className="timeline-meta">
+                        <a href={data.link} target="_blank" rel="noopener noreferrer" className="where">
+                          {data.where}
+                        </a>
+                        <span className="date">{data.date}</span>
+                      </div>
+                      <p className="timeline-description">{data.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </Col>
         </Row>
         <Row className="sec_sp">
@@ -79,21 +74,24 @@ export const About = () => {
             })}
           </Col>
         </Row>
-        <Row className="sec_sp">
-          <Col lang="5">
-            <h3 className="color_sec py-4">services</h3>
-          </Col>
-          <Col lg="7">
-            {services.map((data, i) => {
-              return (
-                <div className="service_ py-4" key={i}>
-                  <h5 className="service__title">{data.title}</h5>
-                  <p className="service_desc">{data.description}</p>
-                </div>
-              );
-            })}
-          </Col>
-        </Row>
+       {/* ================= НОВЫЙ БЛОК SERVICES ================= */}
+<Row className="sec_sp">
+  <Col lg="5">
+    <h3 className="color_sec py-4">Services</h3>
+  </Col>
+  <Col lg="7">
+    <div className="service-grid">
+      {services.map((data, i) => {
+        return (
+          <div className="service-card" key={i}>
+            <h5 className="service-title">{data.title}</h5>
+            <p className="service-description">{data.description}</p>
+          </div>
+        );
+      })}
+    </div>
+  </Col>
+</Row>
       </Container>
     </HelmetProvider>
   );

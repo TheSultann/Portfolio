@@ -278,3 +278,70 @@
     object-fit: contain;  /* Изображение вписывается, а не обрезается */
     width: 100%;          /* Занимает всю ширину контейнера */
 }
+
+/* ================= СТИЛИ ДЛЯ БЛОКА GITHUB ================= */
+
+.github-more-projects {
+    padding-block: 4rem;
+    margin-top: 4rem;
+    border-top: 1px solid var(--clr-neutral-700);
+    text-align: center;
+  }
+  
+  .github-section-title {
+    font-family: var(--ff-secondary);
+    font-size: var(--fs-700);
+    margin-bottom: 3rem;
+    color: var(--clr-neutral-100);
+  }
+  
+  .github-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .github-card {
+    background-color: var(--clr-neutral-800);
+    border: 1px solid var(--clr-neutral-700);
+    border-radius: 0.5rem;
+    padding: 2.5rem 1.5rem;
+    color: var(--clr-neutral-200);
+    text-decoration: none;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .github-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--clr-primary-200);
+    box-shadow: 0 10px 30px -10px hsla(210, 100%, 50%, 0.3);
+  }
+  
+  .github-card-icon {
+    font-size: var(--fs-800);
+    color: var(--clr-primary-200);
+    margin-bottom: 1rem;
+  }
+  
+  .github-card-title {
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-600);
+    margin-bottom: 0.25rem;
+    color: var(--clr-neutral-100);
+  }
+  
+  .github-card-subtitle {
+    color: var(--clr-neutral-400);
+    font-size: var(--fs-400);
+  }
+  /* Добавьте это в конец вашего style.css */
+.github-card-description {
+    color: var(--clr-neutral-400);
+    font-size: var(--fs-400);
+    line-height: 1.4; /* Улучшает читаемость */
+  }
