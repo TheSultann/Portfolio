@@ -6,7 +6,7 @@ import { meta } from "../../content_option";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { contactConfig } from "../../content_option";
 
-export const ContactUs = () => {
+export const ContactSection = ({ compact = false }) => {
   const [formData, setFormdata] = useState({
     email: "",
     name: "",
@@ -66,13 +66,8 @@ export const ContactUs = () => {
   };
 
   return (
-    <HelmetProvider>
+    <section id="contact" className={compact ? "page-section page-section--contact" : undefined}>
       <Container>
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>{meta.title} | Contact</title>
-          <meta name="description" content={meta.description} />
-        </Helmet>
         <Row className="mb-5 mt-3 pt-md-3">
           <Col lg="8">
             <h1 className="display-4 mb-4">Contact Me</h1>
@@ -162,6 +157,19 @@ export const ContactUs = () => {
         </Row>
       </Container>
       <div className={formData.loading ? "loading-bar" : "d-none"}></div>
+    </section>
+  );
+};
+
+export const ContactUs = () => {
+  return (
+    <HelmetProvider>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{meta.title} | Contact</title>
+        <meta name="description" content={meta.description} />
+      </Helmet>
+      <ContactSection />
     </HelmetProvider>
   );
 };

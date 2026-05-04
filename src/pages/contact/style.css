@@ -2,9 +2,23 @@
     padding: 1.375rem .75rem;
     line-height: 1.5;
     color: var(--text-color);
-    background-color: var(--bg-color);
-    border-radius: 0 !important;
-    border: 1px solid var(--secondary-color);
+    background-color: var(--surface-color);
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid var(--border-color);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+address a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact__form .form-control:focus {
+    color: var(--text-color);
+    background-color: var(--surface-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem var(--accent-soft);
 }
 
 .contact__form input.form-control {
@@ -23,7 +37,7 @@ button.btn.ac_btn:hover {
     right: 0;
     height: 10px;
     z-index: 999999999;
-    background: var(--text-color);
+    background: var(--accent-color);
     transform: translateX(100%);
     animation: shift-rightwards 1s ease-in-out infinite;
     animation-delay: .3s;

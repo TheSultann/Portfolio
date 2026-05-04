@@ -10,15 +10,10 @@ import {
   services,
 } from "../../content_option";
 
-export const About = () => {
+export const AboutSection = ({ compact = false }) => {
   return (
-    <HelmetProvider>
+    <section id="about" className={compact ? "page-section page-section--about" : undefined}>
       <Container className="About-header">
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title> About | {meta.title}</title>
-          <meta name="description" content={meta.description} />
-        </Helmet>
         <Row className="mb-5 mt-3 pt-md-3">
           <Col lg="8">
             <h1 className="display-4 mb-4">About me</h1>
@@ -74,25 +69,37 @@ export const About = () => {
             })}
           </Col>
         </Row>
-       {/* ================= НОВЫЙ БЛОК SERVICES ================= */}
-<Row className="sec_sp">
-  <Col lg="5">
-    <h3 className="color_sec py-4">Services</h3>
-  </Col>
-  <Col lg="7">
-    <div className="service-grid">
-      {services.map((data, i) => {
-        return (
-          <div className="service-card" key={i}>
-            <h5 className="service-title">{data.title}</h5>
-            <p className="service-description">{data.description}</p>
-          </div>
-        );
-      })}
-    </div>
-  </Col>
-</Row>
+        <Row className="sec_sp">
+          <Col lg="5">
+            <h3 className="color_sec py-4">Services</h3>
+          </Col>
+          <Col lg="7">
+            <div className="service-grid">
+              {services.map((data, i) => {
+                return (
+                  <div className="service-card" key={i}>
+                    <h5 className="service-title">{data.title}</h5>
+                    <p className="service-description">{data.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </Col>
+        </Row>
       </Container>
+    </section>
+  );
+};
+
+export const About = () => {
+  return (
+    <HelmetProvider>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title> About | {meta.title}</title>
+        <meta name="description" content={meta.description} />
+      </Helmet>
+      <AboutSection />
     </HelmetProvider>
   );
 };

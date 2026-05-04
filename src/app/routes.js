@@ -11,7 +11,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 const AnimatedRoutes = withRouter(({ location }) => (
   <TransitionGroup>
     <CSSTransition
-      key={location.key}
+      key={location.pathname}
       timeout={{
         enter: 400,
         exit: 400,

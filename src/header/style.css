@@ -1,11 +1,21 @@
 .site__header {
     top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+.header__bar {
+    gap: 1rem;
+}
+
+.header__actions {
+    gap: 0.35rem;
 }
 
 .menu__button {
     color: var(--text-color);
+    border: 0;
+    background: transparent;
 }
 
 .menu__button:focus,
@@ -15,16 +25,16 @@
 }
 
 .menu__button svg {
-    width: 2em;
-    height: 2em;
+    width: 1.55em;
+    height: 1.55em;
     fill: var(--text-color-2);
     color: var(--text-color-2);
 }
 
 .nav_ac {
-    padding: 5px 15px;
+    padding: 5px 18px;
     margin: 0;
-    border: unset;
+    border: 1px solid var(--border-color);
     background: var(--primary-color);
     font-size: 1.25rem;
     font-family: Marcellus;
@@ -33,6 +43,75 @@
     height: 50px;
     font-weight: bold;
     z-index: 1000;
+    border-radius: var(--radius-sm);
+}
+
+.brand_mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    height: 44px;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.brand_mark__icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.brand_mark__logo {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.brand_mark__icon--mobile {
+    display: none;
+}
+
+.header__actions .nav_ac,
+.theme_toggler {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    border-radius: 0;
+}
+
+@media (max-width: 575px) {
+    .site__header {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .nav_ac {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .brand_mark {
+        width: 44px;
+        justify-content: center;
+    }
+
+    .brand_mark__logo {
+        display: none;
+    }
+
+    .brand_mark__icon--mobile {
+        display: block;
+    }
 }
 
 .nav_ac:hover {
@@ -46,6 +125,7 @@
     position: fixed;
     z-index: 999999;
     background: var(--primary-color);
+    border-color: var(--border-color);
 }
 
 .br-top {
@@ -181,6 +261,9 @@
     padding: 4px 0px;
     text-decoration: none;
     font-family: Marcellus;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .the_menu .menu_item>a:hover {
@@ -198,10 +281,16 @@
     font-family: Marcellus;
     font-size: 14px;
     background: var(--primary-color);
+    border-top: 1px solid var(--border-color);
 }
 
 .menu_footer a {
     color: var(--text-color-2);
     margin-right: 10px;
+    padding-inline: 2px;
     text-decoration: none;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }

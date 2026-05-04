@@ -4,6 +4,8 @@ import { VscGrabber, VscClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { logotext ,socialprofils } from "../content_option";
 import Themetoggle from "../components/themetoggle";
+import sultanMark from "../assets/images/sultan-mark.png";
+import sultanLogo from "../assets/images/sultan-logo.png";
 
 const Headermain = () => {
   const [isActive, setActive] = useState("false");
@@ -16,11 +18,12 @@ const Headermain = () => {
   return (
     <>
       <header className="fixed-top site__header">
-        <div className="d-flex align-items-center justify-content-between">
-          <Link  className="navbar-brand nav_ac" to="/">
-            {logotext}
+        <div className="header__bar d-flex align-items-center justify-content-between">
+          <Link className="navbar-brand nav_ac brand_mark" to="/" aria-label={logotext}>
+            <img className="brand_mark__icon brand_mark__icon--mobile" src={sultanMark} alt="" />
+            <img className="brand_mark__logo" src={sultanLogo} alt="Sultan" />
           </Link>
-          <div className="d-flex align-items-center">
+          <div className="header__actions d-flex align-items-center">
           <Themetoggle />
           <button className="menu__button  nav_ac" onClick={handleToggle}>
             {!isActive ? <VscClose /> : <VscGrabber />}
@@ -35,16 +38,16 @@ const Headermain = () => {
               <div className="menu__container p-3">
                 <ul className="the_menu">
                   <li className="menu_item ">
-                  <Link  onClick={handleToggle} to="/" className="my-3">Home</Link>
+                  <Link  onClick={handleToggle} to="/#home" className="my-3">Home</Link>
                   </li>
                   <li className="menu_item">
-                    <Link  onClick={handleToggle} to="/portfolio" className="my-3"> Portfolio</Link>
+                    <Link  onClick={handleToggle} to="/#portfolio" className="my-3"> Portfolio</Link>
                   </li>
                   <li className="menu_item">
-                  <Link onClick={handleToggle} to="/about" className="my-3">About</Link>
+                  <Link onClick={handleToggle} to="/#about" className="my-3">About</Link>
                   </li>
                   <li className="menu_item">
-                  <Link onClick={handleToggle} to="/contact" className="my-3"> Contact</Link>
+                  <Link onClick={handleToggle} to="/#contact" className="my-3"> Contact</Link>
                   </li>
                 </ul>
               </div>
@@ -52,9 +55,9 @@ const Headermain = () => {
           </div>
           <div className="menu_footer d-flex flex-column flex-md-row justify-content-between align-items-md-center position-absolute w-100 p-3">
             <div className="d-flex">
-            <a href={socialprofils.facebook}>Facebook</a>
             <a href={socialprofils.github}>Github</a>
-            <a href={socialprofils.twitter}>Twitter</a>
+            <a href={socialprofils.linkedin}>LinkedIn</a>
+            <a href={socialprofils.telegram}>Telegram</a>
             </div>
             <p className="copyright m-0">copyright __ {logotext}</p>
           </div>

@@ -1,34 +1,43 @@
 import filmzone from "./assets/images/filmzone.jpg"
-import SpeakChek from "./assets/images/SpeakChek.jpg"
-
-
+import wordping from "./assets/images/Word_Ping.jpg"
+import heroImage from "./assets/images/hero-generated.webp"
 
 const logotext = "TheSultann";
+
 const meta = {
     title: "TheSultann",
-    description: "I’m Xayrullo data scientist _ Front-End devloper,currently working in Urgench",
+    description: "I'm Xayrullo data scientist _ Front-End devloper,currently working in Urgench",
 };
 
 const introdata = {
-    title: "I’m Sultan ",
+    title: "I'm Sultan ",
     animated: {
+        first: "Backend Developer",
         second: "Backend Enthusiast",
         third: "Full-Stack Creator",
     },
     description: "Otanazarov Sultan is a back-end developer who creates user-friendly and aesthetic interfaces. Attentive to details, responsible, purposeful and strives for an ideal result.",
-    your_img_url: "https://cimg.co/w/articles-attachments/0/611/e04b918532.jpeg",
+    your_img_url: heroImage,
 };
 
 const dataabout = {
     title: "Briefly about my self",
     aboutme: "As a Computer Engineering student with hands-on experience in backend development, I focus on creating high-impact solutions using Node.js, Express.js, and MongoDB. My project portfolio includes an AI-integrated Telegram bot for English learners and a full-stack educational platform with role-based user management. My participation in hackathons and tech competitions has honed my ability to innovate under pressure. I am seeking opportunities to apply my skills to real-world challenges and contribute to a forward-thinking development team.",
 };
+
 const worktimeline = [{
+    jobtitle: "Frontend Developer Intern",
+    where: "MBOS",
+    date: "March 2026 - Present",
+    link: "https://mbos.uz/",
+    description: "Developing responsive web interfaces, building reusable frontend components, fixing UI bugs, improving user experience, and working with the team on clean, maintainable frontend code.",
+},
+{
     jobtitle: "AI Data Annotator",
     where: "BigBro.AI",
-    date: "June 2025 - Present",
+    date: "June 2025 - January 2026",
     link: "https://bigbro.ai/",
-    description: "Responsible for data annotation and preparing datasets for AI/ML models. This role sharpened my attention to detail and provided a practical understanding of the data lifecycle in AI projects.",
+    description: "Annotated and prepared datasets for AI/ML models, improving attention to detail and gaining practical experience with the data preparation lifecycle for AI products.",
 },
 {
     jobtitle: "Freelance Backend Developer",
@@ -37,6 +46,7 @@ const worktimeline = [{
     description: "Developed and maintained several projects, including AI-powered Telegram bots and educational platforms using the MERN stack. Focused on creating RESTful APIs, managing databases, and implementing server-side logic.",
 },
 ];
+
 const skills = [{
     name: "Html",
     value: 76,
@@ -45,7 +55,6 @@ const skills = [{
     name: "Css",
     value: 75,
 },
-
 {
     name: "Javascript",
     value: 85,
@@ -64,7 +73,7 @@ const skills = [{
 },
 {
     name: "SQL",
-    value: 40,
+    value: 70,
 },
 ];
 
@@ -91,27 +100,53 @@ const dataportfolio = [{
     link: "https://filmzonee.netlify.app/",
 },
 {
-    img: SpeakChek,
-    title: "English Grammar & IELTS Speaking Bot",
-    tag1: "Node.js",
-    tag2: "Telegram bot",
-    description: "A Telegram bot designed to improve English grammar and practice for the IELTS Speaking test, utilizing the Google Gemini and Speech-to-Text APIs.",
-    link: "https://t.me/Speak_CheckBot",
+    img: wordping,
+    title: "WordPing",
+    tag1: "TypeScript",
+    tag2: "PostgreSQL",
+    description: "Telegram SRS learning bot with spaced repetition, contextual AI examples, quizzes, reminders, Mini App stats, background workers, and backup flow.",
+    link: "https://t.me/WordPing_bot",
 },
+];
 
-
+const githubProjects = [{
+    title: "SpeakCheck",
+    subtitle: "Grammar & IELTS practice bot",
+    tags: ["Node.js", "Telegram Bot", "Gemini"],
+    description: "Telegram bot for grammar correction and IELTS Speaking practice with AI feedback and speech-to-text support.",
+    telegram: "https://t.me/Speak_CheckBot",
+},
+{
+    title: "HEMIS-Notify",
+    subtitle: "Schedule notification bot",
+    tags: ["Node.js", "Express.js", "MongoDB"],
+    description: "Telegram notification system for HEMIS schedules with account linking, reminders, group support, and protected API endpoints.",
+    repo: "https://github.com/TheSultann/HEMIS-Notify",
+},
+{
+    title: "Golden Study",
+    subtitle: "Education management platform",
+    tags: ["React", "Node.js", "Redis"],
+    description: "Full-stack education platform with role-based access, lessons, grading, finance modules, dashboards, caching, and background jobs.",
+    repo: "https://github.com/TheSultann/Golden_Study",
+    demo: "https://golden-study-olive.vercel.app",
+},
+{
+    title: "PieStat",
+    subtitle: "AI sales assistant",
+    tags: ["JavaScript", "Telegram Bot", "Gemini"],
+    description: "AI-assisted sales and inventory bot for small businesses with product tracking, analytics, and Gemini-powered forecasting.",
+    repo: "https://github.com/TheSultann/PieTrack-A",
+},
 ];
 
 const contactConfig = {
     YOUR_EMAIL: "otanazarovsultanbek@gmail.com",
     YOUR_FONE: "+998(93)-743-27-21",
     description: "Ready for cooperation and new projects! Contact me in a convenient way:",
-    // creat an emailjs.com account 
-    // check out this tutorial https://www.emailjs.com/docs/examples/reactjs/
     YOUR_SERVICE_ID: "service_xjp3zhc",
     YOUR_TEMPLATE_ID: "template_mq5ytaf",
     YOUR_USER_ID: "8YHB7Q-aZIrwXZNM0"
-
 };
 
 const socialprofils = {
@@ -120,10 +155,12 @@ const socialprofils = {
     linkedin: "https://www.linkedin.com/in/sultanbek-otanazarov-142931292/",
     telegram: "https://t.me/S7L5An",
 };
+
 export {
     meta,
     dataabout,
     dataportfolio,
+    githubProjects,
     worktimeline,
     skills,
     services,

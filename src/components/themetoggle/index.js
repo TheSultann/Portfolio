@@ -12,9 +12,9 @@ const Themetoggle = () => {
     localStorage.setItem('theme', theme ); 
   }, [theme]);
   return (
-    <div className="nav_ac" onClick={themetoggle}>
+    <button type="button" className="theme_toggler" onClick={themetoggle} aria-label="Toggle theme">
       <WiMoonAltWaningCrescent4 />
-    </div>
+    </button>
   );
 };
 

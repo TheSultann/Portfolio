@@ -20,8 +20,8 @@
 
 .progress {
     height: 5px;
-    background: var(--secondary);
-    border-radius: 0;
+    background: var(--surface-color-2);
+    border-radius: 999px;
     box-shadow: none;
     margin-bottom: 30px;
     overflow: visible;
@@ -29,10 +29,11 @@
 
 .progress .progress-bar {
     position: relative;
-    background: var(--text-color);
+    background: var(--accent-color);
     animation: animate-positive 2s;
     overflow: visible;
-    opacity: 0.9;
+    opacity: 1;
+    border-radius: 999px;
 }
 
 .progress .progress-value {
@@ -70,9 +71,6 @@
     padding-bottom: 4px;
 }
 
-
-/*! CSS Used keyframes */
-
 @-webkit-keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -98,92 +96,103 @@
         transform: translateZ(0);
     }
 }
-/* ================= STYLES FOR WORK TIMELINE ================= */
 
 .timeline-container {
     position: relative;
-    padding-left: 30px; /* Space for the timeline line */
-  }
-  
-  .timeline-container::before {
+    padding-left: 30px;
+}
+
+.timeline-container::before {
     content: '';
     position: absolute;
     left: 10px;
     top: 5px;
     bottom: 5px;
     width: 2px;
-    background-color: var(--clr-neutral-700); /* Using your color variable */
-  }
-  
-  .timeline-item {
+    background-color: var(--border-color);
+}
+
+.timeline-item {
     position: relative;
-    margin-bottom: 40px; /* Space between items */
-  }
-  
-  .timeline-item::before {
+    margin-bottom: 40px;
+}
+
+.timeline-item::before {
     content: '';
     position: absolute;
-    left: -25px; /* Position on the timeline line */
+    left: -25px;
     top: 5px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: var(--clr-primary-200); /* Using your color variable */
-    border: 2px solid var(--clr-neutral-800);
-  }
-  
-  .timeline-title {
-    font-family: var(--ff-secondary);
-    font-size: var(--fs-500);
-    font-weight: var(--fw-bold);
-    color: var(--clr-neutral-100);
-  }
-  
-  .timeline-meta {
+    background-color: var(--accent-color);
+    border: 2px solid var(--surface-color);
+}
+
+.timeline-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.timeline-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
     margin: 5px 0 10px;
-    font-size: var(--fs-300);
-    color: var(--clr-neutral-400);
-  }
-  
-  .timeline-description {
-    font-size: var(--fs-400);
-    color: var(--clr-neutral-300);
-    line-height: 1.6;
-  }
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
 
-  /* ================= STYLES FOR SERVICES SECTION ================= */
+.timeline-description {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
 .service-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Одна колонка по умолчанию */
+    grid-template-columns: 1fr;
     gap: 2rem;
-  }
-  
-  .service-card {
-    background-color: var(--clr-neutral-800);
-    border-left: 4px solid var(--clr-primary-200);
+}
+
+.service-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-color);
     padding: 1.5rem;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .service-card:hover {
+}
+
+.service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .service-title {
-    font-family: var(--ff-secondary);
-    font-size: var(--fs-500);
+    box-shadow: var(--shadow-soft);
+}
+
+.service-title {
+    font-size: 1.25rem;
     margin-bottom: 0.75rem;
-    color: var(--clr-neutral-100);
-  }
-  
-  .service-description {
-    color: var(--clr-neutral-300);
+    color: var(--secondary-color);
+}
+
+.service-description {
+    color: var(--text-muted);
     line-height: 1.6;
-  }
+}
+
+.where {
+    color: var(--accent-color);
+    text-decoration: none;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.where:hover,
+.where:focus {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
