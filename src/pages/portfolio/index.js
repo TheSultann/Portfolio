@@ -29,7 +29,11 @@ export const PortfolioSection = ({ compact = false }) => {
                   />
                 </div>
                 <div className="project__content grid-flow">
-                  <h3 className="project__title">{data.title}</h3>
+                  <h3 className="project__title">
+                    {data.title}
+                    {data.status === 'active' && <span className="status-badge status-badge--active">Server Active</span>}
+                    {data.status === 'partial' && <span className="status-badge status-badge--partial">Frontend Only</span>}
+                  </h3>
                   <ul className="project__tags flex-group" role="list">
                     <li className="project__tag">{data.tag1}</li>
                     <li className="project__tag">{data.tag2}</li>
@@ -51,9 +55,14 @@ export const PortfolioSection = ({ compact = false }) => {
               <div className="github-grid">
                 {githubProjects.map((project) => {
                   return (
-                    <article className="github-card" key={project.title}>
+                    <article className={`github-card ${project.status ? `github-card--${project.status}` : ''}`} key={project.title}>
                       <FaGithub className="github-card-icon" />
-                      <h4 className="github-card-title">{project.title}</h4>
+                      <h4 className="github-card-title">
+                        {project.title}
+                        {project.status === 'active' && <span className="status-badge status-badge--active">Server Active</span>}
+                        {project.status === 'partial' && <span className="status-badge status-badge--partial">Frontend Only</span>}
+                        {project.status === 'inactive' && <span className="status-badge status-badge--inactive">Server Offline</span>}
+                      </h4>
                       <p className="github-card-subtitle">{project.subtitle}</p>
                       <ul className="github-card-tags" role="list">
                         {project.tags.map((tag) => (

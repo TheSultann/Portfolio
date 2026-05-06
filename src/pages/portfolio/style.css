@@ -226,10 +226,37 @@
     box-shadow: var(--shadow-soft);
 }
 
+/* Active server card: green hover glow */
+.github-card--active:hover {
+    border-color: #28a745;
+    box-shadow: 0 4px 24px rgba(40, 167, 69, 0.18), var(--shadow-soft);
+}
+
+.github-card--active:hover .github-card-icon {
+    color: #28a745;
+}
+
+/* Inactive server card: red hover hint */
+.github-card--inactive:hover {
+    border-color: #dc3545;
+    box-shadow: 0 4px 24px rgba(220, 53, 69, 0.15), var(--shadow-soft);
+}
+
+.github-card--inactive:hover .github-card-icon {
+    color: #dc3545;
+}
+
+/* Partial (frontend only) card: yellow hover */
+.github-card--partial:hover {
+    border-color: #ffc107;
+    box-shadow: 0 4px 24px rgba(255, 193, 7, 0.15), var(--shadow-soft);
+}
+
 .github-card-icon {
     font-size: var(--fs-800);
     color: var(--accent-color);
     margin-bottom: 1rem;
+    transition: color var(--transition);
 }
 
 .github-card-title {
@@ -243,6 +270,8 @@
     align-items: center;
     justify-content: center;
     text-wrap: balance;
+    flex-wrap: wrap;
+    gap: 0.35rem;
 }
 
 .github-card-subtitle {
@@ -331,4 +360,82 @@
     .project__img {
         min-height: 240px;
     }
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 100vw;
+    margin-left: 0.75rem;
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.status-badge--active {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.25);
+}
+
+.status-badge--active::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.8);
+    animation: pulse-green 2s infinite;
+}
+
+.status-badge--partial {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.25);
+}
+
+.status-badge--partial::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ffc107;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.8);
+    animation: pulse-yellow 2s infinite;
+}
+
+.status-badge--inactive {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.25);
+}
+
+.status-badge--inactive::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #dc3545;
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.6);
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(40, 167, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+
+@keyframes pulse-yellow {
+    0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(255, 193, 7, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
 }

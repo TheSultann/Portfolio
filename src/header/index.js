@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import "./style.css";
-import { VscGrabber, VscClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
-import { logotext ,socialprofils } from "../content_option";
+import { logotext, socialprofils } from "../content_option";
 import Themetoggle from "../components/themetoggle";
-import sultanMark from "../assets/images/sultan-mark.png";
-import sultanLogo from "../assets/images/sultan-logo.png";
+import { ReactComponent as SultanMark } from "../assets/images/S-logo.svg";
 
 const Headermain = () => {
-  const [isActive, setActive] = useState("false");
+  const [isActive, setActive] = useState(false);
 
   const handleToggle = () => {
     setActive(!isActive);
@@ -20,46 +18,53 @@ const Headermain = () => {
       <header className="fixed-top site__header">
         <div className="header__bar d-flex align-items-center justify-content-between">
           <Link className="navbar-brand nav_ac brand_mark" to="/" aria-label={logotext}>
-            <img className="brand_mark__icon brand_mark__icon--mobile" src={sultanMark} alt="" />
-            <img className="brand_mark__logo" src={sultanLogo} alt="Sultan" />
+            <SultanMark className="brand_mark__icon" focusable="false" />
+            <span className="brand_mark__word">Sultan</span>
           </Link>
           <div className="header__actions d-flex align-items-center">
-          <Themetoggle />
-          <button className="menu__button  nav_ac" onClick={handleToggle}>
-            {!isActive ? <VscClose /> : <VscGrabber />}
-          </button>
-          
+            <Themetoggle />
+            <button 
+              className={`menu__button nav_ac ${isActive ? "is-active" : ""}`} 
+              onClick={handleToggle}
+              aria-label="Toggle navigation"
+            >
+              <div className="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
           </div>
         </div>
 
-        <div className={`site__navigation ${!isActive ? "menu__opend" : ""}`}>
+        <div className={`site__navigation ${isActive ? "menu__opend" : ""}`}>
           <div className="bg__menu h-100">
             <div className="menu__wrapper">
               <div className="menu__container p-3">
                 <ul className="the_menu">
-                  <li className="menu_item ">
-                  <Link  onClick={handleToggle} to="/#home" className="my-3">Home</Link>
+                  <li className="menu_item">
+                    <Link onClick={handleToggle} to="/#home" className="my-3">Home</Link>
                   </li>
                   <li className="menu_item">
-                    <Link  onClick={handleToggle} to="/#portfolio" className="my-3"> Portfolio</Link>
+                    <Link onClick={handleToggle} to="/#portfolio" className="my-3">Portfolio</Link>
                   </li>
                   <li className="menu_item">
-                  <Link onClick={handleToggle} to="/#about" className="my-3">About</Link>
+                    <Link onClick={handleToggle} to="/#about" className="my-3">About</Link>
                   </li>
                   <li className="menu_item">
-                  <Link onClick={handleToggle} to="/#contact" className="my-3"> Contact</Link>
+                    <Link onClick={handleToggle} to="/#contact" className="my-3">Contact</Link>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
           <div className="menu_footer d-flex flex-column flex-md-row justify-content-between align-items-md-center position-absolute w-100 p-3">
-            <div className="d-flex">
-            <a href={socialprofils.github}>Github</a>
-            <a href={socialprofils.linkedin}>LinkedIn</a>
-            <a href={socialprofils.telegram}>Telegram</a>
+            <div className="d-flex social_links">
+              <a href={socialprofils.github} target="_blank" rel="noopener noreferrer">Github</a>
+              <a href={socialprofils.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href={socialprofils.telegram} target="_blank" rel="noopener noreferrer">Telegram</a>
             </div>
-            <p className="copyright m-0">copyright __ {logotext}</p>
+            <p className="copyright m-0">© {new Date().getFullYear()} {logotext}</p>
           </div>
         </div>
       </header>
@@ -67,7 +72,6 @@ const Headermain = () => {
       <div className="br-bottom"></div>
       <div className="br-left"></div>
       <div className="br-right"></div>
-      
     </>
   );
 };

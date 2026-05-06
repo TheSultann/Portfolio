@@ -1,16 +1,22 @@
 .stick_follow_icon {
     top: 50%;
     left: 30px;
-    width: 20px;
-    height: 200px;
     position: fixed;
-    margin-top: -100px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 20;
 }
 
 .stick_follow_icon ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
 }
 
 .stick_follow_icon svg {
@@ -20,24 +26,21 @@
 }
 
 .stick_follow_icon p {
-    top: 70px;
-    left: -24px;
-    width: 68px;
-    height: 20px;
     color: var(--text-color);
     font-size: 12px;
     font-weight: 600;
     line-height: 1.2;
     white-space: nowrap;
-    position: relative;
-    transform: rotate( -90deg);
+    margin: 3.25rem 0 0;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
 }
 
 .stick_follow_icon ul li {
-    display: block;
+    display: flex;
     font-size: 12px;
     text-align: center;
-    margin-bottom: 10px;
+    margin: 0;
     transition: all .3s;
 }
 
@@ -51,26 +54,30 @@
 }
 
 .stick_follow_icon p:after {
-    top: 9px;
-    right: -48px;
-    width: 40px;
+    top: -2.75rem;
+    left: 50%;
+    width: 1px;
     height: 1px;
+    min-height: 2.25rem;
     content: "";
     display: block;
     position: absolute;
+    transform: translateX(-50%);
     background-color: var(--text-color);
 }
 
 @media only screen and (max-width: 991px) {
     .stick_follow_icon {
-        width: unset;
+        width: 100%;
         height: unset;
         position: static;
         margin-top: unset;
+        transform: none;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         justify-content: center;
-        padding: 40px 0;
+        gap: 1rem;
+        padding: 2rem 1rem;
         align-items: center;
     }
     .stick_follow_icon p {
@@ -81,15 +88,28 @@
         white-space: nowrap;
         position: relative;
         transform: unset;
-        font-size: 17px;
-        margin-right: 65px;
+        writing-mode: horizontal-tb;
+        font-size: 1rem;
+        margin: 0;
     }
     .stick_follow_icon ul {
-        margin-bottom: 20px;
+        margin: 0;
+        flex-direction: row;
+        gap: 0.25rem;
     }
     .stick_follow_icon ul li {
         display: inline-flex;
         margin-bottom: 0;
-        margin-right: 4px;
+        margin-right: 0;
+    }
+    .stick_follow_icon p:after {
+        content: none;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .stick_follow_icon {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 }

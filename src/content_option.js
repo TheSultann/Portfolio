@@ -98,6 +98,7 @@ const dataportfolio = [{
     tag2: "Express.js",
     description: "Built the backend for the FilmZone project, focusing on user authentication (registration/login) and watchlist functionality.",
     link: "https://filmzonee.netlify.app/",
+    status: "partial",
 },
 {
     img: wordping,
@@ -106,6 +107,7 @@ const dataportfolio = [{
     tag2: "PostgreSQL",
     description: "Telegram SRS learning bot with spaced repetition, contextual AI examples, quizzes, reminders, Mini App stats, background workers, and backup flow.",
     link: "https://t.me/WordPing_bot",
+    status: "active",
 },
 ];
 
@@ -115,6 +117,8 @@ const githubProjects = [{
     tags: ["Node.js", "Telegram Bot", "Gemini"],
     description: "Telegram bot for grammar correction and IELTS Speaking practice with AI feedback and speech-to-text support.",
     telegram: "https://t.me/Speak_CheckBot",
+    repo: "https://github.com/TheSultann/SpeakCheck",
+    status: "inactive",
 },
 {
     title: "HEMIS-Notify",
@@ -122,6 +126,8 @@ const githubProjects = [{
     tags: ["Node.js", "Express.js", "MongoDB"],
     description: "Telegram notification system for HEMIS schedules with account linking, reminders, group support, and protected API endpoints.",
     repo: "https://github.com/TheSultann/HEMIS-Notify",
+    telegram: "https://t.me/HEMISnotify_bot",
+    status: "active",
 },
 {
     title: "Golden Study",
@@ -130,6 +136,7 @@ const githubProjects = [{
     description: "Full-stack education platform with role-based access, lessons, grading, finance modules, dashboards, caching, and background jobs.",
     repo: "https://github.com/TheSultann/Golden_Study",
     demo: "https://golden-study-olive.vercel.app",
+    status: "partial",
 },
 {
     title: "PieStat",
@@ -137,6 +144,7 @@ const githubProjects = [{
     tags: ["JavaScript", "Telegram Bot", "Gemini"],
     description: "AI-assisted sales and inventory bot for small businesses with product tracking, analytics, and Gemini-powered forecasting.",
     repo: "https://github.com/TheSultann/PieTrack-A",
+    status: "inactive",
 },
 ];
 
