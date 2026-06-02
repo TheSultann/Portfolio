@@ -127,7 +127,7 @@ const githubProjects = [{
     description: "Telegram notification system for HEMIS schedules with account linking, reminders, group support, and protected API endpoints.",
     repo: "https://github.com/TheSultann/HEMIS-Notify",
     telegram: "https://t.me/HEMISnotify_bot",
-    status: "active",
+    status: "inactive",
 },
 {
     title: "Golden Study",
