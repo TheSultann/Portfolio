@@ -2,6 +2,7 @@
     "name": "react-portfolio",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://TheSultann.github.io/Portfolio",
     "dependencies": {
         "@emailjs/browser": "^4.4.1",
         "axios": "^1.7.9",
