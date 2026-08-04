@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import * as emailjs from "emailjs-com";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { meta } from "../../content_option";
+import { meta, contactConfig, socialprofils } from "../../content_option";
 import { Container, Row, Col, Alert } from "react-bootstrap";
-import { contactConfig } from "../../content_option";
+import { Tilt3DCard } from "../../components/Tilt3DCard";
+import { Mail, Phone, Send, MessageSquare } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTelegramPlane } from "react-icons/fa";
 
 export const ContactSection = ({ compact = false }) => {
   const [formData, setFormdata] = useState({
@@ -20,7 +22,6 @@ export const ContactSection = ({ compact = false }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormdata((prev) => ({ ...prev, loading: true }));
-
 
     const templateParams = {
       from_name: formData.email,
@@ -38,22 +39,23 @@ export const ContactSection = ({ compact = false }) => {
       )
       .then(
         (result) => {
-          console.log(result.text);
           setFormdata({
+            email: "",
+            name: "",
+            message: "",
             loading: false,
-            alertmessage: "SUCCESS! ,Thankyou for your messege",
+            alertmessage: "Message sent successfully! I will get back to you soon.",
             variant: "success",
             show: true,
           });
         },
         (error) => {
-          console.log(error.text);
           setFormdata({
-            alertmessage: `Faild to send!,${error.text}`,
+            loading: false,
+            alertmessage: `Failed to send message: ${error.text}`,
             variant: "danger",
             show: true,
           });
-          document.getElementsByClassName("co_alert")[0].scrollIntoView();
         }
       );
   };
@@ -66,97 +68,152 @@ export const ContactSection = ({ compact = false }) => {
   };
 
   return (
-    <section id="contact" className={compact ? "page-section page-section--contact" : undefined}>
-      <Container>
-        <Row className="mb-5 mt-3 pt-md-3">
-          <Col lg="8">
-            <h1 className="display-4 mb-4">Contact Me</h1>
-            <hr className="t_border my-4 ml-0 text-left" />
-          </Col>
-        </Row>
-        <Row className="sec_sp">
-          <Col lg="12">
-            <Alert
-              //show={formData.show}
-              variant={formData.variant}
-              className={`rounded-0 co_alert ${formData.show ? "d-block" : "d-none"
-                }`}
-              onClose={() => setFormdata({ show: false })}
-              dismissible
-            >
-              <p className="my-0">{formData.alertmessage}</p>
-            </Alert>
-          </Col>
-          <Col lg="5" className="mb-5">
-            <h3 className="color_sec py-4">Get in touch</h3>
-            <address>
-              <strong>Email:</strong>{" "}
-              <a href={`mailto:${contactConfig.YOUR_EMAIL}`}>
-                {contactConfig.YOUR_EMAIL}
-              </a>
-              <br />
-              <br />
-              {contactConfig.hasOwnProperty("YOUR_FONE") ? (
-                <p>
-                  <strong>Phone:</strong> {contactConfig.YOUR_FONE}
-                </p>
-              ) : (
-                ""
-              )}
-            </address>
-            <p>{contactConfig.description}</p>
-          </Col>
-          <Col lg="7" className="d-flex align-items-center">
-            <form onSubmit={handleSubmit} className="contact__form w-100">
-              <Row>
-                <Col lg="6" className="form-group">
-                  <input
-                    className="form-control"
-                    id="name"
-                    name="name"
-                    placeholder="Name"
-                    value={formData.name || ""}
-                    type="text"
-                    required
-                    onChange={handleChange}
-                  />
-                </Col>
-                <Col lg="6" className="form-group">
-                  <input
-                    className="form-control rounded-0"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    value={formData.email || ""}
-                    required
-                    onChange={handleChange}
-                  />
-                </Col>
-              </Row>
-              <textarea
-                className="form-control rounded-0"
-                id="message"
-                name="message"
-                placeholder="Message"
-                rows="5"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              ></textarea>
-              <br />
-              <Row>
-                <Col lg="12" className="form-group">
-                  <button className="btn ac_btn" type="submit">
-                    {formData.loading ? "Sending..." : "Send"}
-                  </button>
-                </Col>
-              </Row>
-            </form>
+    <section id="contact" className="page-section">
+      <Container className="contact-section-container">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-tag">
+            <MessageSquare size={14} />
+            <span>Get In Touch</span>
+          </div>
+          <h2 className="section-title">Let's Connect</h2>
+          <p className="section-subtitle">
+            Have a project in mind or interested in collaboration? Feel free to reach out anytime!
+          </p>
+        </div>
+
+        <Row className="justify-content-center">
+          <Col lg="11">
+            <Tilt3DCard maxTilt={6} depth={15}>
+              <div className="contact-glass-card">
+                <Row className="g-4">
+                  {/* Left Contact Details */}
+                  <Col lg="5">
+                    <div className="contact-info-box">
+                      <h3 style={{ fontSize: "1.4rem", fontWeight: "700", marginBottom: "0.5rem" }}>
+                        Contact Channels
+                      </h3>
+                      <p className="text-muted" style={{ fontSize: "0.95rem" }}>
+                        {contactConfig.description}
+                      </p>
+
+                      <a href={`mailto:${contactConfig.YOUR_EMAIL}`} className="contact-info-item">
+                        <div className="contact-icon-wrapper">
+                          <Mail size={20} />
+                        </div>
+                        <div>
+                          <p className="contact-info-label">Direct Email</p>
+                          <p className="contact-info-value">{contactConfig.YOUR_EMAIL}</p>
+                        </div>
+                      </a>
+
+                      {contactConfig.YOUR_FONE && (
+                        <a href={`tel:${contactConfig.YOUR_FONE}`} className="contact-info-item">
+                          <div className="contact-icon-wrapper">
+                            <Phone size={20} />
+                          </div>
+                          <div>
+                            <p className="contact-info-label">Phone / Telegram</p>
+                            <p className="contact-info-value">{contactConfig.YOUR_FONE}</p>
+                          </div>
+                        </a>
+                      )}
+
+                      <div className="social-links-grid">
+                        <a
+                          href={socialprofils.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="social-glass-btn"
+                        >
+                          <FaGithub size={16} />
+                          <span>GitHub</span>
+                        </a>
+                        <a
+                          href={socialprofils.telegram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="social-glass-btn"
+                        >
+                          <FaTelegramPlane size={16} />
+                          <span>Telegram</span>
+                        </a>
+                        <a
+                          href={socialprofils.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="social-glass-btn"
+                        >
+                          <FaLinkedin size={16} />
+                          <span>LinkedIn</span>
+                        </a>
+                      </div>
+                    </div>
+                  </Col>
+
+                  {/* Right Form */}
+                  <Col lg="7">
+                    {formData.show && (
+                      <Alert
+                        variant={formData.variant}
+                        onClose={() => setFormdata({ ...formData, show: false })}
+                        dismissible
+                        className="mb-4"
+                      >
+                        {formData.alertmessage}
+                      </Alert>
+                    )}
+
+                    <form onSubmit={handleSubmit} className="contact-form-glass">
+                      <Row className="g-3">
+                        <Col md="6">
+                          <input
+                            type="text"
+                            name="name"
+                            placeholder="Your Name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            className="form-input-glass"
+                          />
+                        </Col>
+                        <Col md="6">
+                          <input
+                            type="email"
+                            name="email"
+                            placeholder="Your Email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="form-input-glass"
+                          />
+                        </Col>
+                      </Row>
+
+                      <textarea
+                        name="message"
+                        rows="5"
+                        placeholder="Your Message..."
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        className="form-input-glass"
+                      />
+
+                      <div>
+                        <button type="submit" className="btn-send-glass" disabled={formData.loading}>
+                          <span>{formData.loading ? "Sending Message..." : "Send Message"}</span>
+                          <Send size={16} />
+                        </button>
+                      </div>
+                    </form>
+                  </Col>
+                </Row>
+              </div>
+            </Tilt3DCard>
           </Col>
         </Row>
       </Container>
-      <div className={formData.loading ? "loading-bar" : "d-none"}></div>
     </section>
   );
 };

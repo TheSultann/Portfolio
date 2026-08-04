@@ -1,98 +1,155 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { dataportfolio, githubProjects, meta } from "../../content_option";
+import { Tilt3DCard } from "../../components/Tilt3DCard";
+import { ExternalLink, Send, Layers, Code2 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 export const PortfolioSection = ({ compact = false }) => {
+  const [filter, setFilter] = useState("all");
+
+  const allProjects = [
+    ...dataportfolio.map((item) => ({ ...item, category: "fullstack", type: "featured" })),
+    ...githubProjects.map((item) => ({
+      ...item,
+      category: item.tags.some((t) => t.toLowerCase().includes("telegram") || t.toLowerCase().includes("bot"))
+        ? "telegram"
+        : item.tags.some((t) => t.toLowerCase().includes("react"))
+        ? "fullstack"
+        : "backend",
+      type: "github",
+    })),
+  ];
+
+  const filteredProjects =
+    filter === "all"
+      ? allProjects
+      : allProjects.filter((p) => p.category === filter);
+
   return (
-    <section id="portfolio" className={compact ? "page-section page-section--portfolio" : undefined}>
-      <Container className="About-header">
-        <Row className="mb-5 mt-3 pt-md-3">
-          <Col lg="8">
-            <h1 className="display-4 mb-4"> Portfolio </h1>{" "}
-            <hr className="t_border my-4 ml-0 text-left" />
-          </Col>
-        </Row>
-        <div className="mb-5 ">
-          {dataportfolio.map((data, i) => {
-            return (
-              <div key={i} className="project">
-                <div className="project__img-container">
-                  <img
-                    className="project__img"
-                    src={data.img}
-                    alt={data.title}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="project__content grid-flow">
-                  <h3 className="project__title">
-                    {data.title}
-                    {data.status === 'active' && <span className="status-badge status-badge--active">Server Active</span>}
-                    {data.status === 'partial' && <span className="status-badge status-badge--partial">Frontend Only</span>}
-                  </h3>
-                  <ul className="project__tags flex-group" role="list">
-                    <li className="project__tag">{data.tag1}</li>
-                    <li className="project__tag">{data.tag2}</li>
-                  </ul>
-                  <p>{data.description}</p>
-                  <a className="project__cta" href={data.link} target="_blank" rel="noopener noreferrer">
-                    view project
-                  </a>
-                </div>
-              </div>
-            );
-          })}
+    <section id="portfolio" className="page-section">
+      <Container className="portfolio-section-container">
+        <div className="section-header">
+          <div className="section-tag">
+            <Layers size={14} />
+            <span>Curated Works</span>
+          </div>
+          <h2 className="section-title">Featured Projects</h2>
+          <p className="section-subtitle">
+            Explore a collection of high-performance backend systems, AI Telegram bots, and full-stack web applications.
+          </p>
         </div>
 
-        <div className="github-more-projects">
-          <Row>
-            <Col>
-              <h2 className="github-section-title">Other Projects</h2>
-              <div className="github-grid">
-                {githubProjects.map((project) => {
-                  return (
-                    <article className={`github-card ${project.status ? `github-card--${project.status}` : ''}`} key={project.title}>
-                      <FaGithub className="github-card-icon" />
-                      <h4 className="github-card-title">
-                        {project.title}
-                        {project.status === 'active' && <span className="status-badge status-badge--active">Server Active</span>}
-                        {project.status === 'partial' && <span className="status-badge status-badge--partial">Frontend Only</span>}
-                        {project.status === 'inactive' && <span className="status-badge status-badge--inactive">Server Offline</span>}
-                      </h4>
-                      <p className="github-card-subtitle">{project.subtitle}</p>
-                      <ul className="github-card-tags" role="list">
-                        {project.tags.map((tag) => (
-                          <li key={tag}>{tag}</li>
-                        ))}
-                      </ul>
-                      <p className="github-card-description">{project.description}</p>
-                      <div className="github-card-actions">
-                        {project.repo && (
-                          <a href={project.repo} target="_blank" rel="noopener noreferrer">
-                            GitHub
-                          </a>
-                        )}
-                        {project.demo && (
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                            Live
-                          </a>
-                        )}
-                        {project.telegram && (
-                          <a href={project.telegram} target="_blank" rel="noopener noreferrer">
-                            Telegram
-                          </a>
-                        )}
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-            </Col>
-          </Row>
+        {/* Category Filter Tabs */}
+        <div className="portfolio-filter-tabs">
+          <button
+            className={`filter-tab-btn ${filter === "all" ? "active" : ""}`}
+            onClick={() => setFilter("all")}
+          >
+            All Projects ({allProjects.length})
+          </button>
+          <button
+            className={`filter-tab-btn ${filter === "backend" ? "active" : ""}`}
+            onClick={() => setFilter("backend")}
+          >
+            Backend & Systems
+          </button>
+          <button
+            className={`filter-tab-btn ${filter === "telegram" ? "active" : ""}`}
+            onClick={() => setFilter("telegram")}
+          >
+            AI & Telegram Bots
+          </button>
+          <button
+            className={`filter-tab-btn ${filter === "fullstack" ? "active" : ""}`}
+            onClick={() => setFilter("fullstack")}
+          >
+            Full-Stack Apps
+          </button>
+        </div>
+
+        {/* Projects Grid with 3D Tilt Cards */}
+        <div className="featured-projects-grid">
+          {filteredProjects.map((project, index) => {
+            const isFeatured = project.type === "featured";
+            return (
+              <Tilt3DCard key={project.title + index} maxTilt={10} depth={20}>
+                <div className="featured-project-card">
+                  {isFeatured && (
+                    <div className="featured-project-img-wrapper">
+                      <img
+                        src={project.img}
+                        alt={project.title}
+                        className="featured-project-img"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+
+                  <div className="project-card-header">
+                    <h3 className="project-card-title">{project.title}</h3>
+                    {project.status && (
+                      <span className={`status-badge-pill ${project.status}`}>
+                        ● {project.status === "active" ? "Active" : project.status === "partial" ? "Frontend" : "Offline"}
+                      </span>
+                    )}
+                  </div>
+
+                  {project.subtitle && (
+                    <p className="m-0 text-muted" style={{ fontSize: "0.85rem", marginBottom: "0.5rem" }}>
+                      {project.subtitle}
+                    </p>
+                  )}
+
+                  <div className="project-tags-list">
+                    {isFeatured ? (
+                      <>
+                        <span className="project-tag-item">{project.tag1}</span>
+                        <span className="project-tag-item">{project.tag2}</span>
+                      </>
+                    ) : (
+                      project.tags?.map((t) => (
+                        <span className="project-tag-item" key={t}>
+                          {t}
+                        </span>
+                      ))
+                    )}
+                  </div>
+
+                  <p className="project-card-desc">{project.description}</p>
+
+                  <div className="project-card-footer">
+                    {project.link && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn-card-action">
+                        <span>Live App</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-card-action">
+                        <span>Demo</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    )}
+                    {project.repo && (
+                      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="btn-card-action">
+                        <FaGithub size={14} />
+                        <span>Code</span>
+                      </a>
+                    )}
+                    {project.telegram && (
+                      <a href={project.telegram} target="_blank" rel="noopener noreferrer" className="btn-card-action">
+                        <Send size={14} />
+                        <span>Bot</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </Tilt3DCard>
+            );
+          })}
         </div>
       </Container>
     </section>
@@ -104,7 +161,7 @@ export const Portfolio = () => {
     <HelmetProvider>
       <Helmet>
         <meta charSet="utf-8" />
-        <title> Portfolio | {meta.title} </title>{" "}
+        <title>Portfolio | {meta.title}</title>
         <meta name="description" content={meta.description} />
       </Helmet>
       <PortfolioSection />

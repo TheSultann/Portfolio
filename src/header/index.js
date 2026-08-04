@@ -13,18 +13,49 @@ const Headermain = () => {
     document.body.classList.toggle("ovhidden");
   };
 
+  const closeMenu = () => {
+    if (isActive) {
+      setActive(false);
+      document.body.classList.remove("ovhidden");
+    }
+  };
+
   return (
     <>
       <header className="fixed-top site__header">
         <div className="header__bar d-flex align-items-center justify-content-between">
-          <Link className="navbar-brand nav_ac brand_mark" to="/" aria-label={logotext}>
+          <Link className="brand_mark" to="/" onClick={closeMenu} aria-label={logotext}>
             <SultanMark className="brand_mark__icon" focusable="false" />
-            <span className="brand_mark__word">Sultan</span>
+            <span className="brand_mark__word">{logotext}</span>
           </Link>
-          <div className="header__actions d-flex align-items-center">
+
+          <ul className="header__nav-links d-none d-md-flex">
+            <li>
+              <Link className="header__nav-link" to="/#home">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link className="header__nav-link" to="/#portfolio">
+                Portfolio
+              </Link>
+            </li>
+            <li>
+              <Link className="header__nav-link" to="/#about">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link className="header__nav-link" to="/#contact">
+                Contact
+              </Link>
+            </li>
+          </ul>
+
+          <div className="header__actions d-flex align-items-center gap-2">
             <Themetoggle />
-            <button 
-              className={`menu__button nav_ac ${isActive ? "is-active" : ""}`} 
+            <button
+              className={`menu__button nav_ac d-md-none ${isActive ? "is-active" : ""}`}
               onClick={handleToggle}
               aria-label="Toggle navigation"
             >
@@ -38,40 +69,44 @@ const Headermain = () => {
         </div>
 
         <div className={`site__navigation ${isActive ? "menu__opend" : ""}`}>
-          <div className="bg__menu h-100">
-            <div className="menu__wrapper">
-              <div className="menu__container p-3">
-                <ul className="the_menu">
-                  <li className="menu_item">
-                    <Link onClick={handleToggle} to="/#home" className="my-3">Home</Link>
-                  </li>
-                  <li className="menu_item">
-                    <Link onClick={handleToggle} to="/#portfolio" className="my-3">Portfolio</Link>
-                  </li>
-                  <li className="menu_item">
-                    <Link onClick={handleToggle} to="/#about" className="my-3">About</Link>
-                  </li>
-                  <li className="menu_item">
-                    <Link onClick={handleToggle} to="/#contact" className="my-3">Contact</Link>
-                  </li>
-                </ul>
-              </div>
+          <div className="bg__menu">
+            <ul className="the_menu">
+              <li className="menu_item">
+                <Link onClick={handleToggle} to="/#home">
+                  Home
+                </Link>
+              </li>
+              <li className="menu_item">
+                <Link onClick={handleToggle} to="/#portfolio">
+                  Portfolio
+                </Link>
+              </li>
+              <li className="menu_item">
+                <Link onClick={handleToggle} to="/#about">
+                  About
+                </Link>
+              </li>
+              <li className="menu_item">
+                <Link onClick={handleToggle} to="/#contact">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+
+            <div className="menu_footer">
+              <a href={socialprofils.github} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+              <a href={socialprofils.linkedin} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              <a href={socialprofils.telegram} target="_blank" rel="noopener noreferrer">
+                Telegram
+              </a>
             </div>
-          </div>
-          <div className="menu_footer d-flex flex-column flex-md-row justify-content-between align-items-md-center position-absolute w-100 p-3">
-            <div className="d-flex social_links">
-              <a href={socialprofils.github} target="_blank" rel="noopener noreferrer">Github</a>
-              <a href={socialprofils.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href={socialprofils.telegram} target="_blank" rel="noopener noreferrer">Telegram</a>
-            </div>
-            <p className="copyright m-0">© {new Date().getFullYear()} {logotext}</p>
           </div>
         </div>
       </header>
-      <div className="br-top"></div>
-      <div className="br-bottom"></div>
-      <div className="br-left"></div>
-      <div className="br-right"></div>
     </>
   );
 };

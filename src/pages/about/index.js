@@ -9,83 +9,120 @@ import {
   skills,
   services,
 } from "../../content_option";
+import { Tilt3DCard } from "../../components/Tilt3DCard";
+import { User, Briefcase, Cpu, ShieldCheck, Server, Bot, Layout } from "lucide-react";
 
 export const AboutSection = ({ compact = false }) => {
+  const serviceIcons = [<Server size={24} />, <Bot size={24} />, <Layout size={24} />];
+
   return (
-    <section id="about" className={compact ? "page-section page-section--about" : undefined}>
-      <Container className="About-header">
-        <Row className="mb-5 mt-3 pt-md-3">
-          <Col lg="8">
-            <h1 className="display-4 mb-4">About me</h1>
-            <hr className="t_border my-4 ml-0 text-left" />
-          </Col>
-        </Row>
-        <Row className="sec_sp">
-          <Col lg="5">
-            <h3 className="color_sec py-4">Work Timeline</h3>
-          </Col>
-          <Col lg="7">
-            <div className="timeline-container">
-              {worktimeline.map((data, i) => {
-                return (
-                  <div className="timeline-item" key={i}>
-                    <div className="timeline-content">
-                      <h5 className="timeline-title">{data.jobtitle}</h5>
-                      <div className="timeline-meta">
-                        <a href={data.link} target="_blank" rel="noopener noreferrer" className="where">
-                          {data.where}
+    <section id="about" className="page-section">
+      <Container className="about-section-container">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-tag">
+            <User size={14} />
+            <span>Developer Journey</span>
+          </div>
+          <h2 className="section-title">About & Experience</h2>
+          <p className="section-subtitle">
+            Passionate computer engineering student specializing in scalable back-end infrastructure, RESTful APIs, and intelligent automation.
+          </p>
+        </div>
+
+        {/* Bio Overview */}
+        <div className="about-bio-card">
+          <p className="about-bio-text">{dataabout.aboutme}</p>
+        </div>
+
+        {/* Work Timeline */}
+        <div className="mb-5">
+          <div className="d-flex align-items-center gap-2 mb-4">
+            <Briefcase color="var(--accent-cyan)" size={22} />
+            <h3 className="m-0" style={{ fontSize: "1.6rem", fontWeight: "700" }}>
+              Work Experience
+            </h3>
+          </div>
+
+          <div className="timeline-container">
+            {worktimeline.map((data, i) => (
+              <div className="timeline-item" key={i}>
+                <Tilt3DCard maxTilt={8} depth={15}>
+                  <div className="timeline-glass-card">
+                    <h4 className="timeline-title">{data.jobtitle}</h4>
+                    <div className="timeline-meta">
+                      {data.link ? (
+                        <a
+                          href={data.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="company-link"
+                        >
+                          @{data.where}
                         </a>
-                        <span className="date">{data.date}</span>
-                      </div>
-                      <p className="timeline-description">{data.description}</p>
+                      ) : (
+                        <span className="company-link">@{data.where}</span>
+                      )}
+                      <span className="timeline-date">{data.date}</span>
                     </div>
+                    <p className="timeline-description">{data.description}</p>
                   </div>
-                );
-              })}
-            </div>
-          </Col>
-        </Row>
-        <Row className="sec_sp">
-          <Col lg="5">
-            <h3 className="color_sec py-4">Skills</h3>
-          </Col>
-          <Col lg="7">
-            {skills.map((data, i) => {
-              return (
-                <div key={i}>
-                  <h3 className="progress-title">{data.name}</h3>
-                  <div className="progress">
-                    <div
-                      className="progress-bar"
-                      style={{
-                        width: `${data.value}%`,
-                      }}
-                    >
-                      <div className="progress-value">{data.value}%</div>
-                    </div>
-                  </div>
+                </Tilt3DCard>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Skills & Tech Stack */}
+        <div className="mb-5">
+          <div className="d-flex align-items-center gap-2 mb-4">
+            <Cpu color="var(--accent-amber)" size={22} />
+            <h3 className="m-0" style={{ fontSize: "1.6rem", fontWeight: "700" }}>
+              Core Technical Skills
+            </h3>
+          </div>
+
+          <div className="skills-grid">
+            {skills.map((data, i) => (
+              <div className="skill-card" key={i}>
+                <div className="skill-header">
+                  <span className="skill-name">{data.name}</span>
+                  <span className="skill-percentage">{data.value}%</span>
                 </div>
-              );
-            })}
-          </Col>
-        </Row>
-        <Row className="sec_sp">
-          <Col lg="5">
-            <h3 className="color_sec py-4">Services</h3>
-          </Col>
-          <Col lg="7">
-            <div className="service-grid">
-              {services.map((data, i) => {
-                return (
-                  <div className="service-card" key={i}>
-                    <h5 className="service-title">{data.title}</h5>
-                    <p className="service-description">{data.description}</p>
+                <div className="skill-progress-bg">
+                  <div
+                    className="skill-progress-fill"
+                    style={{ width: `${data.value}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Services Provided */}
+        <div>
+          <div className="d-flex align-items-center gap-2 mb-4">
+            <ShieldCheck color="var(--accent-cyan)" size={22} />
+            <h3 className="m-0" style={{ fontSize: "1.6rem", fontWeight: "700" }}>
+              Specialized Services
+            </h3>
+          </div>
+
+          <div className="services-grid">
+            {services.map((data, i) => (
+              <Tilt3DCard key={i} maxTilt={10} depth={20}>
+                <div className="service-glass-card">
+                  <div className="service-icon-box">
+                    {serviceIcons[i % serviceIcons.length]}
                   </div>
-                );
-              })}
-            </div>
-          </Col>
-        </Row>
+                  <h4 className="service-title">{data.title}</h4>
+                  <p className="service-description">{data.description}</p>
+                </div>
+              </Tilt3DCard>
+            ))}
+          </div>
+        </div>
       </Container>
     </section>
   );
@@ -96,7 +133,7 @@ export const About = () => {
     <HelmetProvider>
       <Helmet>
         <meta charSet="utf-8" />
-        <title> About | {meta.title}</title>
+        <title>About | {meta.title}</title>
         <meta name="description" content={meta.description} />
       </Helmet>
       <AboutSection />
