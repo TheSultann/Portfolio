@@ -55,7 +55,7 @@ const Headermain = () => {
           <div className="header__actions d-flex align-items-center gap-2">
             <Themetoggle />
             <button
-              className={`menu__button nav_ac d-md-none ${isActive ? "is-active" : ""}`}
+              className={`menu__button d-md-none ${isActive ? "is-active" : ""}`}
               onClick={handleToggle}
               aria-label="Toggle navigation"
             >

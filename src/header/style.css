@@ -1,7 +1,7 @@
 .site__header {
-  top: 16px;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  top: 12px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   z-index: 1000;
   max-width: 1400px;
   margin: 0 auto;
@@ -16,7 +16,7 @@
   border: 1px solid var(--surface-border);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   border-radius: var(--radius-full);
-  padding: 0.5rem 1.5rem;
+  padding: 0.4rem 1.2rem;
   transition: var(--transition-smooth);
 }
 
@@ -28,7 +28,7 @@
 .brand_mark {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   text-decoration: none;
   color: var(--text-color);
   font-weight: 700;
@@ -40,14 +40,14 @@
 }
 
 .brand_mark__icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   filter: drop-shadow(0 0 8px var(--accent-cyan));
 }
 
 .brand_mark__word {
   font-family: var(--font-main);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, var(--text-color) 40%, var(--accent-cyan) 100%);
@@ -58,7 +58,7 @@
 .header__nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.75rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -94,14 +94,45 @@
   width: 100%;
 }
 
+/* Header Action Icon Buttons (Theme Toggle & Mobile Hamburger) */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme_toggler,
+.menu__button {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  margin: 0;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--surface-border);
+  color: var(--text-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 1.2rem;
+}
+
+.theme_toggler:hover,
+.menu__button:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
 .hamburger {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 22px;
-  height: 16px;
+  width: 18px;
+  height: 14px;
   position: relative;
-  z-index: 1001;
   cursor: pointer;
 }
 
@@ -112,11 +143,11 @@
   border-radius: 2px;
   background: var(--text-color);
   transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: left center;
+  transform-origin: center;
 }
 
 .menu__button.is-active .hamburger span:nth-child(1) {
-  transform: rotate(45deg) translate(2px, -1px);
+  transform: translateY(6px) rotate(45deg);
 }
 
 .menu__button.is-active .hamburger span:nth-child(2) {
@@ -124,7 +155,7 @@
 }
 
 .menu__button.is-active .hamburger span:nth-child(3) {
-  transform: rotate(-45deg) translate(2px, 1px);
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* Fullscreen Overlay Menu */
@@ -149,7 +180,7 @@
 .bg__menu {
   position: absolute;
   inset: 0;
-  background: rgba(7, 9, 14, 0.95);
+  background: rgba(7, 9, 14, 0.96);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   transform: translateY(-100%);
@@ -172,7 +203,7 @@
 }
 
 .the_menu .menu_item {
-  margin: 1.5rem 0;
+  margin: 1.25rem 0;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -190,7 +221,7 @@
 
 .the_menu .menu_item > a {
   font-family: var(--font-main);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 7vw, 3.5rem);
   font-weight: 800;
   color: var(--text-color);
   transition: color var(--transition-fast), transform var(--transition-fast);
@@ -204,7 +235,7 @@
 
 .menu_footer {
   position: absolute;
-  bottom: 2rem;
+  bottom: 2.5rem;
   display: flex;
   gap: 1.5rem;
   font-family: var(--font-mono);
@@ -218,11 +249,4 @@
 
 .menu_footer a:hover {
   color: var(--accent-cyan);
-}
-
-@media (max-width: 768px) {
-  .site__header {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
 }

@@ -13,10 +13,6 @@ export const Hero3DCanvas = () => {
     let animationFrameId = null;
     let scene = null;
     let camera = null;
-    let geometryCore = null;
-    let materialCore = null;
-    let geometryInner = null;
-    let materialInner = null;
     let particlesGeometry = null;
     let particlesMaterial = null;
 
@@ -56,41 +52,17 @@ export const Hero3DCanvas = () => {
         false
       );
 
-      // Group for 3D objects
+      // Group for particle starfield
       const group = new THREE.Group();
       scene.add(group);
 
-      // 1. Cyber Core (Icosahedron Wireframe)
-      geometryCore = new THREE.IcosahedronGeometry(1.6, 2);
-      materialCore = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.35,
-      });
-      const coreMesh = new THREE.Mesh(geometryCore, materialCore);
-      group.add(coreMesh);
-
-      // 2. Inner Glowing Core
-      geometryInner = new THREE.IcosahedronGeometry(0.9, 1);
-      materialInner = new THREE.MeshPhongMaterial({
-        color: 0xf59e0b,
-        emissive: 0xd97706,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.6,
-        shininess: 100,
-      });
-      const innerMesh = new THREE.Mesh(geometryInner, materialInner);
-      group.add(innerMesh);
-
-      // 3. Particle Starfield Cloud
-      const particlesCount = 450;
+      // Particle Starfield Cloud (Clean ambient background particles)
+      const particlesCount = 500;
       const posArray = new Float32Array(particlesCount * 3);
 
       for (let i = 0; i < particlesCount * 3; i += 3) {
-        posArray[i] = (Math.random() - 0.5) * 12;
-        posArray[i + 1] = (Math.random() - 0.5) * 12;
+        posArray[i] = (Math.random() - 0.5) * 14;
+        posArray[i + 1] = (Math.random() - 0.5) * 14;
         posArray[i + 2] = (Math.random() - 0.5) * 10;
       }
 
@@ -104,7 +76,7 @@ export const Hero3DCanvas = () => {
         size: 0.035,
         color: 0x38bdf8,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.65,
         blending: THREE.AdditiveBlending,
       });
 
@@ -112,19 +84,15 @@ export const Hero3DCanvas = () => {
         particlesGeometry,
         particlesMaterial
       );
-      scene.add(particlesMesh);
+      group.add(particlesMesh);
 
-      // 4. Lights
+      // Lights
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
       scene.add(ambientLight);
 
       const pointLight1 = new THREE.PointLight(0x38bdf8, 2, 20);
       pointLight1.position.set(5, 5, 5);
       scene.add(pointLight1);
-
-      const pointLight2 = new THREE.PointLight(0xf59e0b, 1.5, 20);
-      pointLight2.position.set(-5, -5, 2);
-      scene.add(pointLight2);
 
       // Mouse Parallax Interaction
       let mouseX = 0;
@@ -160,17 +128,8 @@ export const Hero3DCanvas = () => {
         targetX += (mouseX - targetX) * 0.05;
         targetY += (mouseY - targetY) * 0.05;
 
-        group.rotation.x = elapsedTime * 0.15 + targetY;
-        group.rotation.y = elapsedTime * 0.2 + targetX;
-
-        innerMesh.rotation.x = -elapsedTime * 0.3;
-        innerMesh.rotation.y = -elapsedTime * 0.25;
-
-        particlesMesh.rotation.y = elapsedTime * 0.04;
-        particlesMesh.rotation.x = elapsedTime * 0.02;
-
-        const scale = 1 + Math.sin(elapsedTime * 2) * 0.04;
-        coreMesh.scale.set(scale, scale, scale);
+        group.rotation.y = elapsedTime * 0.05 + targetX;
+        group.rotation.x = elapsedTime * 0.03 + targetY;
 
         renderer.render(scene, camera);
         animationFrameId = requestAnimationFrame(animate);
@@ -187,10 +146,6 @@ export const Hero3DCanvas = () => {
             container.removeChild(renderer.domElement);
           } catch (e) {}
         }
-        if (geometryCore) geometryCore.dispose();
-        if (materialCore) materialCore.dispose();
-        if (geometryInner) geometryInner.dispose();
-        if (materialInner) materialInner.dispose();
         if (particlesGeometry) particlesGeometry.dispose();
         if (particlesMaterial) particlesMaterial.dispose();
         if (renderer) renderer.dispose();
