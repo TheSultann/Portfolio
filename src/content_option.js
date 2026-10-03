@@ -6,7 +6,7 @@ const logotext = "TheSultann";
 
 const meta = {
     title: "TheSultann",
-    description: "I'm Xayrullo data scientist _ Front-End devloper,currently working in Urgench",
+    description: "I'm Sultan, Full-Stack & Backend Developer",
 };
 
 const introdata = {
@@ -16,13 +16,13 @@ const introdata = {
         second: "Backend Enthusiast",
         third: "Full-Stack Creator",
     },
-    description: "Otanazarov Sultan is a back-end developer who creates user-friendly and aesthetic interfaces. Attentive to details, responsible, purposeful and strives for an ideal result.",
+    description: "Otanazarov Sultan is a developer who creates user-friendly, high-performance backends and aesthetic interfaces. Attentive to details, responsible, purposeful and strives for an ideal result.",
     your_img_url: heroImage,
 };
 
 const dataabout = {
     title: "Briefly about my self",
-    aboutme: "As a Computer Engineering student with hands-on experience in backend development, I focus on creating high-impact solutions using Node.js, Express.js, and MongoDB. My project portfolio includes an AI-integrated Telegram bot for English learners and a full-stack educational platform with role-based user management. My participation in hackathons and tech competitions has honed my ability to innovate under pressure. I am seeking opportunities to apply my skills to real-world challenges and contribute to a forward-thinking development team.",
+    aboutme: "As a Computer Engineering student with hands-on experience in backend & frontend development, I focus on creating high-impact solutions using Node.js, Express.js, MongoDB, React, and TypeScript. My project portfolio includes an enterprise university management platform (MBOS), an AI-integrated Telegram bot for English learners, and full-stack educational platforms. My participation in hackathons and tech competitions has honed my ability to innovate under pressure. I am seeking opportunities to apply my skills to real-world challenges and contribute to a forward-thinking development team.",
 };
 
 const worktimeline = [{
@@ -112,6 +112,15 @@ const dataportfolio = [{
 ];
 
 const githubProjects = [{
+    title: "M-University",
+    subtitle: "Commercial University ERP & Access Control",
+    company: "MBOS",
+    companyLink: "https://mbos.uz/",
+    tags: ["React 19", "TypeScript", "Ant Design", "TanStack Query", "Zustand"],
+    description: "Коммерческий проект MBOS: Enterprise ERP-система для университетов. Учет посещаемости через FaceID/турникеты (СКУД), интерактивное расписание, мониторинг и аналитика.",
+    status: "private",
+},
+{
     title: "SpeakCheck",
     subtitle: "Grammar & IELTS practice bot",
     tags: ["Node.js", "Telegram Bot", "Gemini"],

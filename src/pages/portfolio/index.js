@@ -4,7 +4,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container } from "react-bootstrap";
 import { dataportfolio, githubProjects, meta } from "../../content_option";
 import { Tilt3DCard } from "../../components/Tilt3DCard";
-import { ExternalLink, Send, Layers, Code2 } from "lucide-react";
+import { ExternalLink, Send, Layers, Building2, Lock } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 export const PortfolioSection = ({ compact = false }) => {
@@ -14,12 +14,14 @@ export const PortfolioSection = ({ compact = false }) => {
     ...dataportfolio.map((item) => ({ ...item, category: "fullstack", type: "featured" })),
     ...githubProjects.map((item) => ({
       ...item,
-      category: item.tags.some((t) => t.toLowerCase().includes("telegram") || t.toLowerCase().includes("bot"))
+      category: item.status === "private" || item.company
+        ? "enterprise"
+        : item.tags.some((t) => t.toLowerCase().includes("telegram") || t.toLowerCase().includes("bot"))
         ? "telegram"
         : item.tags.some((t) => t.toLowerCase().includes("react"))
         ? "fullstack"
         : "backend",
-      type: "github",
+      type: item.company ? "enterprise" : "github",
     })),
   ];
 
@@ -38,7 +40,7 @@ export const PortfolioSection = ({ compact = false }) => {
           </div>
           <h2 className="section-title">Featured Projects</h2>
           <p className="section-subtitle">
-            Explore a collection of high-performance backend systems, AI Telegram bots, and full-stack web applications.
+            Explore a collection of enterprise frontend platforms, high-performance backend systems, and AI Telegram bots.
           </p>
         </div>
 
@@ -51,10 +53,16 @@ export const PortfolioSection = ({ compact = false }) => {
             All Projects ({allProjects.length})
           </button>
           <button
-            className={`filter-tab-btn ${filter === "backend" ? "active" : ""}`}
-            onClick={() => setFilter("backend")}
+            className={`filter-tab-btn ${filter === "enterprise" ? "active" : ""}`}
+            onClick={() => setFilter("enterprise")}
           >
-            Backend & Systems
+            Enterprise & Client
+          </button>
+          <button
+            className={`filter-tab-btn ${filter === "fullstack" ? "active" : ""}`}
+            onClick={() => setFilter("fullstack")}
+          >
+            Full-Stack Apps
           </button>
           <button
             className={`filter-tab-btn ${filter === "telegram" ? "active" : ""}`}
@@ -63,10 +71,10 @@ export const PortfolioSection = ({ compact = false }) => {
             AI & Telegram Bots
           </button>
           <button
-            className={`filter-tab-btn ${filter === "fullstack" ? "active" : ""}`}
-            onClick={() => setFilter("fullstack")}
+            className={`filter-tab-btn ${filter === "backend" ? "active" : ""}`}
+            onClick={() => setFilter("backend")}
           >
-            Full-Stack Apps
+            Backend & Systems
           </button>
         </div>
 
@@ -76,7 +84,7 @@ export const PortfolioSection = ({ compact = false }) => {
             const isFeatured = project.type === "featured";
             return (
               <Tilt3DCard key={project.title + index} maxTilt={10} depth={20}>
-                <div className="featured-project-card">
+                <div className={`featured-project-card ${project.company ? "company-card" : ""}`}>
                   {isFeatured && (
                     <div className="featured-project-img-wrapper">
                       <img
@@ -92,7 +100,14 @@ export const PortfolioSection = ({ compact = false }) => {
                     <h3 className="project-card-title">{project.title}</h3>
                     {project.status && (
                       <span className={`status-badge-pill ${project.status}`}>
-                        ● {project.status === "active" ? "Active" : project.status === "partial" ? "Frontend" : "Offline"}
+                        {project.status === "active" && "● Active"}
+                        {project.status === "partial" && "● Frontend"}
+                        {project.status === "private" && (
+                          <>
+                            <Lock size={12} style={{ marginRight: 2 }} /> MBOS Commercial
+                          </>
+                        )}
+                        {project.status === "inactive" && "● Offline"}
                       </span>
                     )}
                   </div>
@@ -131,6 +146,12 @@ export const PortfolioSection = ({ compact = false }) => {
                       <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-card-action">
                         <span>Demo</span>
                         <ExternalLink size={14} />
+                      </a>
+                    )}
+                    {project.companyLink && (
+                      <a href={project.companyLink} target="_blank" rel="noopener noreferrer" className="btn-card-action">
+                        <Building2 size={14} />
+                        <span>{project.company || "Company"}</span>
                       </a>
                     )}
                     {project.repo && (
